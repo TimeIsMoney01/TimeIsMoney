@@ -58,8 +58,8 @@ struct SafeTimeSettingsView: View {
                 }
             }
             .navigationBarTitle("Safe Time Settings")
-            .alert("Save changes?", isPresented: $showConfirm) {
-                Button("Save") {
+            .alert("Save Safe Time?", isPresented: $showConfirm) {
+                Button("Confirm") {
                     safeTimeManager.updateSafeSchedule(
                         start: selectedStart,
                         end: selectedEnd,
@@ -69,7 +69,7 @@ struct SafeTimeSettingsView: View {
                 }
                 Button("Cancel", role: .cancel) {}
             } message: {
-                Text("After saving, you won't be able to modify your safe time for seven days.")
+                Text("This change will be locked for 7 days. Are you sure?")
             }
         }
         .onAppear {
