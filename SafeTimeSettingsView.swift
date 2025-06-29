@@ -10,7 +10,10 @@ struct SafeTimeSettingsView: View {
     @State private var selectedStart = Date()
     /// The currently chosen end time.
     @State private var selectedEnd = Date().addingTimeInterval(3600)
+
     /// The days of the week the safe window is active (1 = Sunday).
+
+
     @State private var selectedDays: Set<Int> = []
 
     var body: some View {
@@ -22,6 +25,22 @@ struct SafeTimeSettingsView: View {
                         .disabled(!safeTimeManager.canUpdateSafeTime)
                     DatePicker("End Time", selection: $selectedEnd, displayedComponents: .hourAndMinute)
                         .disabled(!safeTimeManager.canUpdateSafeTime)
+
+
+                }
+
+                Section(header: Text("Active Days")) {
+                    ForEach(1...7, id: \.self) { day in
+                        let label = Calendar.current.weekdaySymbols[day - 1]
+                        Toggle(label, isOn: Binding(
+                            get: { selectedDays.contains(day) },
+                            set: { isOn in
+                                if isOn { selectedDays.insert(day) } else { selectedDays.remove(day) }
+                            }
+                        ))
+                        .disabled(!safeTimeManager.canUpdateSafeTime)
+                    }
+
                 }
 
                 // Choose which weekdays the window is active
