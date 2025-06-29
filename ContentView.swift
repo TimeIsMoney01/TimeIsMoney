@@ -6,10 +6,10 @@ struct ContentView: View {
     @StateObject private var store = StoreManager()
 
     var body: some View {
-        if onboardingCompleted {
-            MainAppView(store: store)
-        } else {
+        if !onboardingCompleted {
             OnboardingView()
+        } else {
+            MainAppView(store: store)
         }
     }
 }
