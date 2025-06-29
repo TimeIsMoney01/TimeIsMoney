@@ -7,6 +7,15 @@ struct SafeTimeSettingsView: View {
     /// Provides access to persisted safe time information.
     @ObservedObject var safeTimeManager: SafeTimeManager
 
+    /// Tracks when the safe time was last changed.
+    @AppStorage("lastSafeTimeChangeDate") private var lastSafeTimeChangeDate: Double = 0
+
+    /// Whether at least seven days have passed since the last change.
+    private var sevenDaysSinceChange: Bool {
+        let elapsed = Date().timeIntervalSince1970 - lastSafeTimeChangeDate
+        return elapsed >= 7 * 86_400
+    }
+
     /// The currently chosen start time.
     @State private var selectedStart = Date()
     /// The currently chosen end time.
@@ -56,6 +65,7 @@ struct SafeTimeSettingsView: View {
                         end: selectedEnd,
                         days: Array(selectedDays).sorted()
                     )
+                    lastSafeTimeChangeDate = Date().timeIntervalSince1970
                 }
                 Button("Cancel", role: .cancel) {}
             } message: {
