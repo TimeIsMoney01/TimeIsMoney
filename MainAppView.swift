@@ -36,20 +36,24 @@ struct MainAppView: View {
                 .font(.headline)
 
                 ForEach(apps, id: \.self) { app in
+                    let limitReached = (appSessions[app] ?? 0) >= (appLimits[app] ?? 0)
+                    let disableApp = !isInSafeTime && limitReached
+
                     AppCardView(
                         appName: app,
-                            timeUsed: appSessions[app] ?? 0,
-                            limit: appLimits[app] ?? 0
-                        ) {
-                            if (appSessions[app] ?? 0) >= (appLimits[app] ?? 0) {
-                                selectedApp = app
-                                showPaywall = true
-                            } else {
-                                appSessions[app, default: 0] += 1
-                                saveAppSessions()
-                            }
+                        timeUsed: appSessions[app] ?? 0,
+                        limit: appLimits[app] ?? 0,
+                        isDisabled: disableApp
+                    ) {
+                        if limitReached {
+                            selectedApp = app
+                            showPaywall = true
+                        } else {
+                            appSessions[app, default: 0] += 1
+                            saveAppSessions()
                         }
                     }
+                }
                 }
                 .padding()
             }
