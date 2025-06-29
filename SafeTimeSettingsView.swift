@@ -10,6 +10,10 @@ struct SafeTimeSettingsView: View {
     /// Tracks when the safe time was last changed.
     @AppStorage("lastSafeTimeChangeDate") private var lastSafeTimeChangeDate: Double = 0
 
+    /// Persisted start and end times in seconds since 1970 for the selected window.
+    @AppStorage("safeStartTime") private var safeStartTime: Double = 9.0 * 3600.0
+    @AppStorage("safeEndTime") private var safeEndTime: Double = 17.0 * 3600.0
+
     /// Whether at least seven days have passed since the last change.
     private var sevenDaysSinceChange: Bool {
         let elapsed = Date().timeIntervalSince1970 - lastSafeTimeChangeDate
@@ -65,6 +69,8 @@ struct SafeTimeSettingsView: View {
                         end: selectedEnd,
                         days: Array(selectedDays).sorted()
                     )
+                    safeStartTime = selectedStart.timeIntervalSince1970
+                    safeEndTime = selectedEnd.timeIntervalSince1970
                     lastSafeTimeChangeDate = Date().timeIntervalSince1970
                 }
                 Button("Cancel", role: .cancel) {}
@@ -74,8 +80,8 @@ struct SafeTimeSettingsView: View {
         }
         .onAppear {
             // Populate selections with previously saved values
-            selectedStart = safeTimeManager.safeStart
-            selectedEnd = safeTimeManager.safeEnd
+            selectedStart = Date(timeIntervalSince1970: safeStartTime)
+            selectedEnd = Date(timeIntervalSince1970: safeEndTime)
             selectedDays = Set(safeTimeManager.safeDays)
         }
     }
