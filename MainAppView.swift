@@ -9,6 +9,8 @@ struct MainAppView: View {
     @State private var appSessions: [String: Int] = [:]
     @State private var selectedApp: String?
     @State private var showPaywall = false
+    @State private var showSafeTimeSettings = false
+    @StateObject private var safeTimeManager = SafeTimeManager()
 
     let store: StoreManager
     let apps = ["TikTok", "Instagram", "YouTube", "Snapchat", "Reddit"]
@@ -22,15 +24,20 @@ struct MainAppView: View {
             )
             .ignoresSafeArea()
 
-            ScrollView {
-                VStack(spacing: 30) {
-                    Text("Time Is Money")
-                        .font(.system(size: 34, weight: .heavy, design: .rounded))
-                        .padding(.top, 20)
+        ScrollView {
+            VStack(spacing: 30) {
+                Text("Time Is Money")
+                    .font(.system(size: 34, weight: .heavy, design: .rounded))
+                    .padding(.top, 20)
 
-                    ForEach(apps, id: \.self) { app in
-                        AppCardView(
-                            appName: app,
+                Button("Safe Time Settings") {
+                    showSafeTimeSettings = true
+                }
+                .font(.headline)
+
+                ForEach(apps, id: \.self) { app in
+                    AppCardView(
+                        appName: app,
                             timeUsed: appSessions[app] ?? 0,
                             limit: appLimits[app] ?? 0
                         ) {
@@ -59,6 +66,9 @@ struct MainAppView: View {
                     showPaywall = false
                 }, store: store)
             }
+        }
+        .sheet(isPresented: $showSafeTimeSettings) {
+            SafeTimeSettingsView(safeTimeManager: safeTimeManager)
         }
     }
 
