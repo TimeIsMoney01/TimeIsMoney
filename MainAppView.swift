@@ -48,8 +48,19 @@ struct MainAppView: View {
                             selectedApp = app
                             showPaywall = true
                         } else {
-                            appSessions[app, default: 0] += 1
+                            let newUsage = (appSessions[app] ?? 0) + 1
+                            appSessions[app] = newUsage
                             saveAppSessions()
+
+                            let limit = appLimits[app] ?? 0
+                            if limit > 0 {
+                                if newUsage == limit / 2 {
+                                    NotificationManager.shared.notifyHalfLimitReached(for: app)
+                                }
+                                if newUsage == limit {
+                                    NotificationManager.shared.notifyLimitReached(for: app)
+                                }
+                            }
                         }
                     }
                 }

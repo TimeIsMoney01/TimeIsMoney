@@ -11,6 +11,10 @@ class SafeTimeManager: ObservableObject {
     private let minDaysBetweenUpdates = 7
 
     @Published var currentDate = Date()
+
+    init() {
+        NotificationManager.shared.scheduleSafeTimeEndReminder(endHour: safeEndHour, days: safeDays)
+    }
     
     var safeDays: [Int] {
         get {
@@ -62,6 +66,7 @@ class SafeTimeManager: ObservableObject {
         safeEndHour = Calendar.current.component(.hour, from: end)
         safeDays = days
         lastSafeTimeUpdate = Date().timeIntervalSince1970
+        NotificationManager.shared.scheduleSafeTimeEndReminder(endHour: safeEndHour, days: safeDays)
     }
 
     /// Persists new safe time hours using the existing active days.
