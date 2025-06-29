@@ -2,16 +2,14 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var showOnboarding = true
+    @AppStorage("onboardingCompleted") private var onboardingCompleted = false
     @StateObject private var store = StoreManager()
 
     var body: some View {
-        if showOnboarding {
-            OnboardingView {
-                showOnboarding = false
-            }
-        } else {
+        if onboardingCompleted {
             MainAppView(store: store)
+        } else {
+            OnboardingView()
         }
     }
 }
