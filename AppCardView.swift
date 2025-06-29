@@ -4,6 +4,8 @@ struct AppCardView: View {
     let appName: String
     let timeUsed: Int
     let limit: Int
+    /// Whether the start button should be disabled.
+    let isDisabled: Bool
     let onStart: () -> Void
 
     var percentUsed: Double {
@@ -17,6 +19,11 @@ struct AppCardView: View {
         case 0.7..<1.0: return .yellow
         default: return .red
         }
+    }
+
+    /// The color of the start button depending on the disabled state.
+    var buttonColor: Color {
+        isDisabled ? Color.gray.opacity(0.5) : usageColor.opacity(0.8)
     }
 
     var body: some View {
@@ -49,10 +56,11 @@ struct AppCardView: View {
                         .font(.subheadline)
                         .padding(.horizontal, 16)
                         .padding(.vertical, 8)
-                        .background(usageColor.opacity(0.8))
+                        .background(buttonColor)
                         .foregroundColor(.white)
                         .clipShape(Capsule())
                 }
+                .disabled(isDisabled)
             }
             .padding()
         }
