@@ -2,7 +2,7 @@
 import SwiftUI
 
 struct OnboardingView: View {
-    let onFinish: () -> Void
+    @AppStorage("onboardingCompleted") private var onboardingCompleted = false
     @State private var pageIndex = 0
 
     var body: some View {
@@ -59,8 +59,10 @@ struct OnboardingView: View {
                     .multilineTextAlignment(.center)
                     .padding(.horizontal)
 
-                Button(action: onFinish) {
-                    Text("Continue")
+                Button(action: {
+                    onboardingCompleted = true
+                }) {
+                    Text("Get Started")
                         .font(.system(size: 22, weight: .bold))
                         .padding()
                         .frame(maxWidth: .infinity)
