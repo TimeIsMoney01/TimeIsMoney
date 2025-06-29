@@ -1,0 +1,86 @@
+import SwiftUI
+import StoreKit
+
+struct PaywallView: View {
+    let appName: String
+    let onUnlock: () -> Void
+    
+    @Environment(\.dismiss) var dismiss
+    @ObservedObject var store: StoreManager
+
+    var body: some View {
+        NavigationView {
+            VStack(spacing: 30) {
+                Text("Time’s Up for \(appName)")
+                    .font(.largeTitle)
+                    .bold()
+                    .multilineTextAlignment(.center)
+
+                Text("You’ve reached your limit. To keep going, donate an amount below to unlock more time.")
+                    .font(.body)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal)
+
+                if store.isLoading {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle())
+                } else {
+                    productList
+                }
+
+                Button("Cancel") {
+                    dismiss()
+                }
+                .foregroundColor(.red)
+            }
+            .padding()
+            .navigationBarTitleDisplayMode(.inline)
+            .task {
+                await store.loadProducts()
+            }
+        }
+    }
+
+    var productList: some View {
+        ScrollView {
+            VStack(spacing: 20) {
+                ForEach(store.products, id: \.id) { product in
+                    DonationProductButton(product: product) {
+                        Task {
+                            let success = await store.purchase(product) // 🔧 FIXED THIS LINE
+                            if success {
+                                onUnlock()
+                            }
+                        }
+                    }
+                }
+            }
+            .padding()
+        }
+    }
+}
+
+struct DonationProductButton: View {
+    let product: Product
+    let onTap: () -> Void
+
+    var body: some View {
+        Button(action: onTap) {
+            HStack {
+                VStack(alignment: .leading) {
+                    Text(product.displayName)
+                        .font(.headline)
+                    Text(product.description)
+                        .font(.subheadline)
+                        .foregroundColor(.gray)
+                }
+                Spacer()
+                Text(product.displayPrice)
+                    .font(.headline)
+            }
+            .padding()
+            .background(Color.blue.opacity(0.1))
+            .cornerRadius(12)
+        }
+    }
+}

@@ -1,0 +1,182 @@
+{
+  "appPolicies" : {
+    "eula" : "",
+    "policies" : [
+      {
+        "locale" : "en_US",
+        "policyText" : "",
+        "policyURL" : ""
+      }
+    ]
+  },
+  "identifier" : "FA16E20D",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "0.99",
+      "familyShareable" : false,
+      "internalID" : "8C7AFB52",
+      "localizations" : [
+        {
+          "description" : "",
+          "displayName" : "",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.timeismoney.unlock",
+      "referenceName" : "Bonus Time",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "0.50",
+      "familyShareable" : false,
+      "internalID" : "53F5257E",
+      "localizations" : [
+        {
+          "description" : "Donate $0.50 to get past your selected time block",
+          "displayName" : "$0.50 Donation",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "donation_050",
+      "referenceName" : "Donation 50 Cents",
+      "type" : "NonConsumable"
+    },
+    {
+      "displayPrice" : "1.00",
+      "familyShareable" : false,
+      "internalID" : "713F1E8B",
+      "localizations" : [
+        {
+          "description" : "Donate $1.00 to get past your selected time block",
+          "displayName" : "$1.00 Donation",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "donation_100",
+      "referenceName" : "Donation 1 Dollar",
+      "type" : "NonConsumable"
+    },
+    {
+      "displayPrice" : "2.00",
+      "familyShareable" : false,
+      "internalID" : "93BC93EB",
+      "localizations" : [
+        {
+          "description" : "Donate $2.00 to get past your selected time block",
+          "displayName" : "$2.00 Donation",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "donation_200",
+      "referenceName" : "Donation 2 Dollars",
+      "type" : "NonConsumable"
+    },
+    {
+      "displayPrice" : "3.00",
+      "familyShareable" : false,
+      "internalID" : "01D6D9B1",
+      "localizations" : [
+        {
+          "description" : "Donate $3.00 to get past your selected time block",
+          "displayName" : "$3.00 Donation",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "donation_300",
+      "referenceName" : "Donation 3 Dollars",
+      "type" : "NonConsumable"
+    },
+    {
+      "displayPrice" : "4.00",
+      "familyShareable" : false,
+      "internalID" : "E105249A",
+      "localizations" : [
+        {
+          "description" : "Donate $4.00 to get past your selected time block",
+          "displayName" : "$4.00 Donation",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "donation_400",
+      "referenceName" : "Donation 4 Dollars",
+      "type" : "NonConsumable"
+    },
+    {
+      "displayPrice" : "5.00",
+      "familyShareable" : false,
+      "internalID" : "C1C10E93",
+      "localizations" : [
+        {
+          "description" : "Donate $5.00 to get past your selected time block",
+          "displayName" : "$5.00 Donation",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "donation_500",
+      "referenceName" : "Donation 5 Dollars",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_failTransactionsEnabled" : false,
+    "_locale" : "en_US",
+    "_storefront" : "USA",
+    "_storeKitErrors" : [
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Load Products"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Purchase"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Verification"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Store Sync"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Subscription Status"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Transaction"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Manage Subscriptions Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Refund Request Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Offer Code Redeem Sheet"
+      }
+    ]
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 4,
+    "minor" : 0
+  }
+}

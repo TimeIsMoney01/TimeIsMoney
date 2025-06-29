@@ -1,0 +1,20 @@
+
+{
+  "data": {
+    "attributes": {
+      "name": "TimeIsMoney StoreKit Config",
+      "schemaVersion": "2.0",
+      "products": [
+        {
+          "id": "donation_tier",
+          "type": "consumable",
+          "displayName": "Bonus Time Donation",
+          "description": "Unlock bonus screen time by donating",
+          "price": "1.00",
+          "familySharable": false
+        }
+      ]
+    },
+    "type": "storefront"
+  }
+}

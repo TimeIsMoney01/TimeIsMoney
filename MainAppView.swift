@@ -1,0 +1,89 @@
+import SwiftUI
+
+struct MainAppView: View {
+    @AppStorage("appLimits") var appLimitsData: Data?
+    @AppStorage("appSessions") var appSessionsData: Data?
+    @AppStorage("donationAmount") var donationAmount: Double = 1.0
+
+    @State private var appLimits: [String: Int] = [:]
+    @State private var appSessions: [String: Int] = [:]
+    @State private var selectedApp: String?
+    @State private var showPaywall = false
+
+    let store: StoreManager
+    let apps = ["TikTok", "Instagram", "YouTube", "Snapchat", "Reddit"]
+
+    var body: some View {
+        ZStack {
+            LinearGradient(
+                gradient: Gradient(colors: [Color.purple.opacity(0.3), Color.gray.opacity(0.2)]),
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+            .ignoresSafeArea()
+
+            ScrollView {
+                VStack(spacing: 30) {
+                    Text("Time Is Money")
+                        .font(.system(size: 34, weight: .heavy, design: .rounded))
+                        .padding(.top, 20)
+
+                    ForEach(apps, id: \.self) { app in
+                        AppCardView(
+                            appName: app,
+                            timeUsed: appSessions[app] ?? 0,
+                            limit: appLimits[app] ?? 0
+                        ) {
+                            if (appSessions[app] ?? 0) >= (appLimits[app] ?? 0) {
+                                selectedApp = app
+                                showPaywall = true
+                            } else {
+                                appSessions[app, default: 0] += 1
+                                saveAppSessions()
+                            }
+                        }
+                    }
+                }
+                .padding()
+            }
+        }
+        .onAppear {
+            loadAppLimits()
+            loadAppSessions()
+        }
+        .sheet(isPresented: $showPaywall) {
+            if let app = selectedApp {
+                PaywallView(appName: app, onUnlock: {
+                    appSessions[app, default: 0] += bonusTime(for: app)
+                    saveAppSessions()
+                    showPaywall = false
+                }, store: store)
+            }
+        }
+    }
+
+    func loadAppLimits() {
+        if let data = appLimitsData,
+           let decoded = try? JSONDecoder().decode([String: Int].self, from: data) {
+            appLimits = decoded
+        }
+    }
+
+    func loadAppSessions() {
+        if let data = appSessionsData,
+           let decoded = try? JSONDecoder().decode([String: Int].self, from: data) {
+            appSessions = decoded
+        }
+    }
+
+    func saveAppSessions() {
+        if let encoded = try? JSONEncoder().encode(appSessions) {
+            appSessionsData = encoded
+        }
+    }
+
+    func bonusTime(for app: String) -> Int {
+        let limit = appLimits[app, default: 0]
+        return max(1, limit / 2)
+    }
+}
