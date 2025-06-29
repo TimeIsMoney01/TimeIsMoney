@@ -37,15 +37,14 @@ struct MainAppView: View {
 
                 ForEach(apps, id: \.self) { app in
                     let limitReached = (appSessions[app] ?? 0) >= (appLimits[app] ?? 0)
-                    let disableApp = !isInSafeTime && limitReached
 
                     AppCardView(
                         appName: app,
                         timeUsed: appSessions[app] ?? 0,
                         limit: appLimits[app] ?? 0,
-                        isDisabled: disableApp
+                        isDisabled: false
                     ) {
-                        if limitReached {
+                        if !isInSafeTime || limitReached {
                             selectedApp = app
                             showPaywall = true
                         } else {
