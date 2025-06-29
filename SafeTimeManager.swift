@@ -55,11 +55,18 @@ class SafeTimeManager: ObservableObject {
         return Int(ceil(remaining / 86_400))
     }
 
-    /// Persists new safe time hours and records the last update timestamp.
-    func setSafeTime(start: Date, end: Date) {
+    /// Updates the start/end hours and active days while tracking the last
+    /// modification date. This enforces the one-change-per-week rule.
+    func updateSafeSchedule(start: Date, end: Date, days: [Int]) {
         safeStartHour = Calendar.current.component(.hour, from: start)
         safeEndHour = Calendar.current.component(.hour, from: end)
+        safeDays = days
         lastSafeTimeUpdate = Date().timeIntervalSince1970
+    }
+
+    /// Persists new safe time hours using the existing active days.
+    func setSafeTime(start: Date, end: Date) {
+        updateSafeSchedule(start: start, end: end, days: safeDays)
     }
 
     var isInSafeTime: Bool {

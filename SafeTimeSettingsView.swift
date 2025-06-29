@@ -10,6 +10,8 @@ struct SafeTimeSettingsView: View {
     @State private var selectedStart = Date()
     /// The currently chosen end time.
     @State private var selectedEnd = Date().addingTimeInterval(3600)
+    /// The days of the week the safe window is active (1 = Sunday).
+    @State private var selectedDays: Set<Int> = []
 
     /// The days of the week the safe window is active (1 = Sunday).
 
@@ -25,6 +27,24 @@ struct SafeTimeSettingsView: View {
                         .disabled(!safeTimeManager.canUpdateSafeTime)
                     DatePicker("End Time", selection: $selectedEnd, displayedComponents: .hourAndMinute)
                         .disabled(!safeTimeManager.canUpdateSafeTime)
+
+                }
+
+                // Choose which weekdays the window is active using a compact calendar
+                Section(header: Text("Active Days")) {
+                    WeekdayCalendarPicker(selection: $selectedDays,
+                                          disabled: !safeTimeManager.canUpdateSafeTime)
+                }
+
+                // Button to persist selections
+                Section {
+                    Button("Save Safe Time") {
+                        safeTimeManager.updateSafeSchedule(
+                            start: selectedStart,
+                            end: selectedEnd,
+                            days: Array(selectedDays).sorted()
+                        )
+
 
 
                 }
@@ -62,13 +82,18 @@ struct SafeTimeSettingsView: View {
                     Button("Save Safe Time") {
                         safeTimeManager.safeDays = Array(selectedDays).sorted()
                         safeTimeManager.setSafeTime(start: selectedStart, end: selectedEnd)
+
                     }
                     .disabled(!safeTimeManager.canUpdateSafeTime)
                 }
 
                 if !safeTimeManager.canUpdateSafeTime {
                     // Show a notice when edits are locked
+
+                    Text("You can update your safe time again in \(safeTimeManager.remainingDays) days. Changes are allowed once every 7 days.")
+
                     Text("You can update your safe time again in \(safeTimeManager.remainingDays) days.")
+
                         .font(.footnote)
                         .foregroundColor(.gray)
                 }
