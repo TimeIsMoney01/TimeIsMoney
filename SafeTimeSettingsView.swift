@@ -13,6 +13,11 @@ struct SafeTimeSettingsView: View {
     /// The days of the week the safe window is active (1 = Sunday).
     @State private var selectedDays: Set<Int> = []
 
+    /// The days of the week the safe window is active (1 = Sunday).
+
+
+    @State private var selectedDays: Set<Int> = []
+
     var body: some View {
         NavigationView {
             Form {
@@ -22,6 +27,7 @@ struct SafeTimeSettingsView: View {
                         .disabled(!safeTimeManager.canUpdateSafeTime)
                     DatePicker("End Time", selection: $selectedEnd, displayedComponents: .hourAndMinute)
                         .disabled(!safeTimeManager.canUpdateSafeTime)
+
                 }
 
                 // Choose which weekdays the window is active using a compact calendar
@@ -38,13 +44,56 @@ struct SafeTimeSettingsView: View {
                             end: selectedEnd,
                             days: Array(selectedDays).sorted()
                         )
+
+
+
+                }
+
+                Section(header: Text("Active Days")) {
+                    ForEach(1...7, id: \.self) { day in
+                        let label = Calendar.current.weekdaySymbols[day - 1]
+                        Toggle(label, isOn: Binding(
+                            get: { selectedDays.contains(day) },
+                            set: { isOn in
+                                if isOn { selectedDays.insert(day) } else { selectedDays.remove(day) }
+                            }
+                        ))
+                        .disabled(!safeTimeManager.canUpdateSafeTime)
+                    }
+
+                }
+
+                // Choose which weekdays the window is active
+                Section(header: Text("Active Days")) {
+                    ForEach(1...7, id: \.self) { day in
+                        let label = Calendar.current.weekdaySymbols[day - 1]
+                        Toggle(label, isOn: Binding(
+                            get: { selectedDays.contains(day) },
+                            set: { isOn in
+                                if isOn { selectedDays.insert(day) } else { selectedDays.remove(day) }
+                            }
+                        ))
+                        .disabled(!safeTimeManager.canUpdateSafeTime)
+                    }
+                }
+
+                // Button to persist selections
+                Section {
+                    Button("Save Safe Time") {
+                        safeTimeManager.safeDays = Array(selectedDays).sorted()
+                        safeTimeManager.setSafeTime(start: selectedStart, end: selectedEnd)
+
                     }
                     .disabled(!safeTimeManager.canUpdateSafeTime)
                 }
 
                 if !safeTimeManager.canUpdateSafeTime {
                     // Show a notice when edits are locked
+
                     Text("You can update your safe time again in \(safeTimeManager.remainingDays) days. Changes are allowed once every 7 days.")
+
+                    Text("You can update your safe time again in \(safeTimeManager.remainingDays) days.")
+
                         .font(.footnote)
                         .foregroundColor(.gray)
                 }
