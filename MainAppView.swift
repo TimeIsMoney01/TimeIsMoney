@@ -96,4 +96,11 @@ struct MainAppView: View {
         let limit = appLimits[app, default: 0]
         return max(1, limit / 2)
     }
+
+    /// Returns `true` when the current time falls within the user's configured
+    /// Safe Time window.
+    var isInSafeTime: Bool {
+        safeTimeManager.updateCurrentTime()
+        return safeTimeManager.isInSafeTime
+    }
 }
