@@ -22,9 +22,10 @@ struct SessionView: View {
 
             VStack(spacing: 20) {
                 Text("You're in a session for")
-                    .font(.title2)
+                    .font(FontTheme.subtitleFont)
                 Text(appName)
-                    .font(.largeTitle.bold())
+                    .font(FontTheme.titleFont)
+                    .bold()
 
                 Text("Time used: \(timeUsed) / \(limit) min")
                     .padding(.top)

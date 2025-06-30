@@ -27,7 +27,7 @@ struct MainAppView: View {
         ScrollView {
             VStack(spacing: 30) {
                 Text("Time Is Money")
-                    .font(.system(size: 34, weight: .heavy, design: .rounded))
+                    .font(FontTheme.titleFont)
                     .padding(.top, 20)
 
                 Button("Safe Time Settings") {

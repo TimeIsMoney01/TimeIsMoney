@@ -16,7 +16,7 @@ struct AppLimitSettingsView: View {
     var body: some View {
         VStack(spacing: 20) {
             Text("Set Daily Limits")
-                .font(.largeTitle)
+                .font(FontTheme.titleFont)
                 .bold()
                 .padding(.top)
 
@@ -24,7 +24,7 @@ struct AppLimitSettingsView: View {
                 ForEach(appLimits.keys.sorted(), id: \.self) { app in
                     VStack(alignment: .leading) {
                         Text(app)
-                            .font(.headline)
+                            .font(FontTheme.subtitleFont)
 
                         Slider(value: Binding(
                             get: { Double(appLimits[app] ?? 0) },
@@ -32,7 +32,7 @@ struct AppLimitSettingsView: View {
                         ), in: 0...120, step: 5)
 
                         Text("\(appLimits[app] ?? 0) minutes")
-                            .font(.caption)
+                            .font(FontTheme.bodyFont)
                             .foregroundColor(.gray)
                     }
                     .padding(.vertical, 5)
