@@ -31,6 +31,7 @@ struct MainAppView: View {
                     .padding(.top, 20)
 
                 Button("Safe Time Settings") {
+                    HapticManager.tap()
                     showSafeTimeSettings = true
                 }
                 .font(.headline)
@@ -77,6 +78,7 @@ struct MainAppView: View {
                 PaywallView(appName: app, onUnlock: {
                     appSessions[app, default: 0] += bonusTime(for: app)
                     saveAppSessions()
+                    HapticManager.success()
                     showPaywall = false
                 }, store: store)
             }

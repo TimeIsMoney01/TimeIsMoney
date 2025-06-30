@@ -40,7 +40,9 @@ struct AppLimitSettingsView: View {
             }
 
             Button("Save Limits") {
+                HapticManager.tap()
                 saveLimits()
+                HapticManager.success()
                 showDonationPriceScreen = true
             }
             .padding()

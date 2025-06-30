@@ -51,7 +51,10 @@ struct AppCardView: View {
 
                 Spacer()
 
-                Button(action: onStart) {
+                Button(action: {
+                    HapticManager.tap()
+                    onStart()
+                }) {
                     Text("Start")
                         .font(.subheadline)
                         .padding(.horizontal, 16)

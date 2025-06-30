@@ -13,7 +13,10 @@ struct OnboardingView: View {
                     .bold()
                     .multilineTextAlignment(.center)
 
-                Button(action: { pageIndex += 1 }) {
+                Button(action: {
+                    HapticManager.tap()
+                    pageIndex += 1
+                }) {
                     Text("Continue")
                         .font(.system(size: 22, weight: .bold))
                         .padding()
@@ -33,7 +36,10 @@ struct OnboardingView: View {
                     .multilineTextAlignment(.center)
                     .padding()
 
-                Button(action: { pageIndex += 1 }) {
+                Button(action: {
+                    HapticManager.tap()
+                    pageIndex += 1
+                }) {
                     Text("Continue")
                         .font(.system(size: 22, weight: .bold))
                         .padding()
@@ -60,7 +66,9 @@ struct OnboardingView: View {
                     .padding(.horizontal)
 
                 Button(action: {
+                    HapticManager.tap()
                     onboardingCompleted = true
+                    HapticManager.success()
                 }) {
                     Text("Get Started")
                         .font(.system(size: 22, weight: .bold))

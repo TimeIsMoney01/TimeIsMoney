@@ -29,6 +29,7 @@ struct PaywallView: View {
                 }
 
                 Button("Cancel") {
+                    HapticManager.tap()
                     dismiss()
                 }
                 .foregroundColor(.red)
@@ -46,9 +47,11 @@ struct PaywallView: View {
             VStack(spacing: 20) {
                 ForEach(store.products, id: \.id) { product in
                     DonationProductButton(product: product) {
+                        HapticManager.tap()
                         Task {
-                            let success = await store.purchase(product) // 🔧 FIXED THIS LINE
+                            let success = await store.purchase(product)
                             if success {
+                                HapticManager.success()
                                 onUnlock()
                             }
                         }

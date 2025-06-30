@@ -33,6 +33,7 @@ struct InstallProfileInstructionsView: View {
             .padding(.horizontal)
 
             Button(action: {
+                HapticManager.tap()
                 if let url = URL(string: "https://time-is-money-fd03d.web.app/profile-download.html") {
                     UIApplication.shared.open(url)
                 }
@@ -48,7 +49,9 @@ struct InstallProfileInstructionsView: View {
             .padding(.horizontal)
 
             Button(action: {
+                HapticManager.tap()
                 profileInstalled = true
+                HapticManager.success()
             }) {
                 Text("Continue")
                     .font(.headline)
