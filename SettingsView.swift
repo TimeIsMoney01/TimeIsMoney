@@ -35,7 +35,7 @@ struct SettingsView: View {
                 Section(header: Text("About")) {
                     Text("Time is Money v1.0")
                     Text("75% of profits go to charity.")
-                        .font(.footnote)
+                        .font(FontTheme.bodyFont)
                         .foregroundColor(.gray)
                 }
             }
