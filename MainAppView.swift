@@ -1,4 +1,5 @@
 import SwiftUI
+// Use the shared font definitions
 
 struct MainAppView: View {
     @AppStorage("appLimits") var appLimitsData: Data?
@@ -25,16 +26,18 @@ struct MainAppView: View {
             .ignoresSafeArea()
 
         ScrollView {
-            VStack(spacing: 30) {
+            VStack(spacing: 24) {
                 Text("Time Is Money")
                     .font(FontTheme.titleFont)
-                    .padding(.top, 20)
+                    .bold()
+                    .padding(.top, 24)
 
                 Button("Safe Time Settings") {
                     HapticManager.tap()
                     showSafeTimeSettings = true
                 }
                 .primaryButtonStyle()
+                .padding(.horizontal)
 
                 ForEach(apps, id: \.self) { app in
                     let limitReached = (appSessions[app] ?? 0) >= (appLimits[app] ?? 0)
@@ -64,9 +67,11 @@ struct MainAppView: View {
                             }
                         }
                     }
+                    .padding(.horizontal)
                 }
                 }
-                .padding()
+                .padding(.bottom)
+                .padding(.horizontal)
             }
         }
         .onAppear {
