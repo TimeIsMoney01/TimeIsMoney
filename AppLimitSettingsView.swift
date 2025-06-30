@@ -45,11 +45,7 @@ struct AppLimitSettingsView: View {
                 HapticManager.success()
                 showDonationPriceScreen = true
             }
-            .padding()
-            .frame(maxWidth: .infinity)
-            .background(Color.blue)
-            .foregroundColor(.white)
-            .cornerRadius(12)
+            .primaryButtonStyle()
             .padding(.horizontal)
 
             Spacer()

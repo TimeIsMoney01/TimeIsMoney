@@ -15,11 +15,13 @@ struct SettingsView: View {
                         onResetLimits()
                         HapticManager.success()
                     }
+                    .primaryButtonStyle()
                     Button("Reset All App Sessions") {
                         HapticManager.tap()
                         onResetSessions()
                         HapticManager.success()
                     }
+                    .primaryButtonStyle()
                 }
 
                 Section(header: Text("Onboarding")) {
@@ -27,6 +29,7 @@ struct SettingsView: View {
                         HapticManager.tap()
                         onRecallOnboarding()
                     }
+                    .primaryButtonStyle()
                 }
 
                 Section(header: Text("About")) {

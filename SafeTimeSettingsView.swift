@@ -52,6 +52,7 @@ struct SafeTimeSettingsView: View {
                         HapticManager.tap()
                         showConfirm = true
                     }
+                    .primaryButtonStyle()
                     .disabled(!safeTimeManager.canUpdateSafeTime)
                 }
 

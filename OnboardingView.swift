@@ -64,13 +64,8 @@ private struct OnboardingPage: View {
                 action()
             }) {
                 Text(buttonTitle)
-                    .font(.headline.bold())
-                    .foregroundColor(.white)
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color.blue)
-                    .cornerRadius(12)
             }
+            .primaryButtonStyle()
             .padding(.horizontal)
             .padding(.bottom)
         }

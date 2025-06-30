@@ -39,11 +39,7 @@ struct DonationPriceSettingsView: View {
                 presentationMode.wrappedValue.dismiss()
                 HapticManager.success()
             }
-            .padding()
-            .frame(maxWidth: .infinity)
-            .background(Color.blue)
-            .foregroundColor(.white)
-            .cornerRadius(12)
+            .primaryButtonStyle()
             .padding(.horizontal)
 
             Spacer()

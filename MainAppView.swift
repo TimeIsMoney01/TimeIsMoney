@@ -34,7 +34,7 @@ struct MainAppView: View {
                     HapticManager.tap()
                     showSafeTimeSettings = true
                 }
-                .font(.headline)
+                .primaryButtonStyle()
 
                 ForEach(apps, id: \.self) { app in
                     let limitReached = (appSessions[app] ?? 0) >= (appLimits[app] ?? 0)
