@@ -56,6 +56,7 @@ struct AppLimitSettingsView: View {
         .sheet(isPresented: $showDonationPriceScreen) {
             DonationPriceSettingsView()
         }
+        .softBackground()
     }
 
     func saveLimits() {

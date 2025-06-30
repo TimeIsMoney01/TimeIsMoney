@@ -45,6 +45,7 @@ struct DonationPriceSettingsView: View {
             Spacer()
         }
         .padding()
+        .softBackground()
     }
 }
 //

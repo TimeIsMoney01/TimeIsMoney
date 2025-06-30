@@ -36,6 +36,7 @@ struct LimitSetterView: View {
                 }
             }
         }
+        .softBackground()
         .onAppear {
             loadAppLimits()
         }
