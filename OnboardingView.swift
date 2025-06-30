@@ -31,6 +31,7 @@ struct OnboardingView: View {
             .tag(2)
         }
         .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
+        .softBackground()
     }
 }
 

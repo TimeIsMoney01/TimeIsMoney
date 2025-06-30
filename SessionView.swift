@@ -13,13 +13,6 @@ struct SessionView: View {
 
     var body: some View {
         ZStack {
-            LinearGradient(
-                gradient: Gradient(colors: [Color.purple.opacity(0.5), Color.blue.opacity(0.4)]),
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-            .ignoresSafeArea()
-
             VStack(spacing: 20) {
                 Text("You're in a session for")
                     .font(FontTheme.subtitleFont)
@@ -43,6 +36,7 @@ struct SessionView: View {
             }
             .padding()
         }
+        .softBackground()
         .onAppear {
             startTimer()
         }

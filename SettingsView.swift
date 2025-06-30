@@ -49,6 +49,7 @@ struct SettingsView: View {
                 }
             }
         }
+        .softBackground()
     }
 }
 //

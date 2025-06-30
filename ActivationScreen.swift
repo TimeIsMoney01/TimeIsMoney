@@ -4,19 +4,6 @@ import SwiftUI
 struct ActivationScreen: View {
     var body: some View {
         ZStack {
-            LinearGradient(
-                gradient: Gradient(colors: [
-                    Color(red: 120/255, green: 90/255, blue: 160/255),
-                    Color(red: 160/255, green: 140/255, blue: 200/255)
-                ]),
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-            .ignoresSafeArea()
-
-            Color.white.opacity(0.15)
-                .ignoresSafeArea()
-
             VStack(spacing: 26) {
                 Text("Let’s Finish Setup")
                     .font(FontTheme.titleFont)
@@ -51,5 +38,6 @@ struct ActivationScreen: View {
             }
             .padding()
         }
+        .softBackground()
     }
 }

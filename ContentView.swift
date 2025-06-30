@@ -16,5 +16,6 @@ struct ContentView: View {
             }
         }
         .animation(.easeInOut, value: onboardingCompleted)
+        .softBackground()
     }
 }

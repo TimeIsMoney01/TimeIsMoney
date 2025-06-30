@@ -82,6 +82,7 @@ struct SafeTimeSettingsView: View {
                 Text("This change will be locked for 7 days. Are you sure?")
             }
         }
+        .softBackground()
         .onAppear {
             // Populate selections with previously saved values
             selectedStart = Date(timeIntervalSince1970: safeStartTime)

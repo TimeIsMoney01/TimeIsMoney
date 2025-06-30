@@ -18,13 +18,6 @@ struct MainAppView: View {
 
     var body: some View {
         ZStack {
-            LinearGradient(
-                gradient: Gradient(colors: [Color.purple.opacity(0.3), Color.gray.opacity(0.2)]),
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-            .ignoresSafeArea()
-
         ScrollView {
             VStack(spacing: 24) {
                 Text("Time Is Money")
@@ -74,6 +67,7 @@ struct MainAppView: View {
                 .padding(.horizontal)
             }
         }
+        .softBackground()
         .onAppear {
             loadAppLimits()
             loadAppSessions()

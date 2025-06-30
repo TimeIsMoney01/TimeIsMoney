@@ -56,5 +56,6 @@ struct InstallProfileInstructionsView: View {
             Spacer()
         }
         .padding()
+        .softBackground()
     }
 }

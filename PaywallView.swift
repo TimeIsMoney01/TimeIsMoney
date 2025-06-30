@@ -41,6 +41,7 @@ struct PaywallView: View {
                 await store.loadProducts()
             }
         }
+        .softBackground()
     }
 
     var productList: some View {
