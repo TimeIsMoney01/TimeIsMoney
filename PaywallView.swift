@@ -32,6 +32,7 @@ struct PaywallView: View {
                     HapticManager.tap()
                     dismiss()
                 }
+                .primaryButtonStyle()
                 .foregroundColor(.red)
             }
             .padding()
@@ -82,8 +83,7 @@ struct DonationProductButton: View {
                     .font(.headline)
             }
             .padding()
-            .background(Color.blue.opacity(0.1))
-            .cornerRadius(12)
         }
+        .primaryButtonStyle()
     }
 }

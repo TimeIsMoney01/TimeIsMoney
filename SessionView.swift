@@ -38,10 +38,7 @@ struct SessionView: View {
                     sessionActive = false
                     dismiss()
                 }
-                .padding()
-                .background(Color.red.opacity(0.8))
-                .foregroundColor(.white)
-                .clipShape(Capsule())
+                .primaryButtonStyle()
             }
             .padding()
         }

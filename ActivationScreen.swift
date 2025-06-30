@@ -44,12 +44,7 @@ struct ActivationScreen: View {
                         UIApplication.shared.open(url)
                     }
                 }
-                .font(.headline)
-                .padding()
-                .frame(maxWidth: .infinity)
-                .background(Color.purple.opacity(0.85))
-                .foregroundColor(.white)
-                .cornerRadius(12)
+                .primaryButtonStyle()
                 .padding(.horizontal)
 
                 Spacer()

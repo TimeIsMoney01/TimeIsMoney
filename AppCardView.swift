@@ -56,13 +56,8 @@ struct AppCardView: View {
                     onStart()
                 }) {
                     Text("Start")
-                        .font(.subheadline)
-                        .padding(.horizontal, 16)
-                        .padding(.vertical, 8)
-                        .background(buttonColor)
-                        .foregroundColor(.white)
-                        .clipShape(Capsule())
                 }
+                .primaryButtonStyle()
                 .disabled(isDisabled)
             }
             .padding()

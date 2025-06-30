@@ -39,13 +39,8 @@ struct InstallProfileInstructionsView: View {
                 }
             }) {
                 Text("Open Install Page")
-                    .font(.headline)
-                    .foregroundColor(.white)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(Color.blue)
-                    .cornerRadius(12)
             }
+            .primaryButtonStyle()
             .padding(.horizontal)
 
             Button(action: {
@@ -54,13 +49,8 @@ struct InstallProfileInstructionsView: View {
                 HapticManager.success()
             }) {
                 Text("Continue")
-                    .font(.headline)
-                    .foregroundColor(.white)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(Color.green)
-                    .cornerRadius(12)
             }
+            .primaryButtonStyle()
             .padding(.horizontal)
 
             Spacer()
