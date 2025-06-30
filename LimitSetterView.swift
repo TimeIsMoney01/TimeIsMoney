@@ -29,7 +29,9 @@ struct LimitSetterView: View {
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Save") {
+                        HapticManager.tap()
                         saveAppLimits()
+                        HapticManager.success()
                     }
                 }
             }

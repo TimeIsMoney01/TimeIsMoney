@@ -49,6 +49,7 @@ struct SafeTimeSettingsView: View {
                 // Button to persist selections
                 Section {
                     Button("Save Safe Time") {
+                        HapticManager.tap()
                         showConfirm = true
                     }
                     .disabled(!safeTimeManager.canUpdateSafeTime)
@@ -64,6 +65,7 @@ struct SafeTimeSettingsView: View {
             .navigationBarTitle("Safe Time Settings")
             .alert("Save Safe Time?", isPresented: $showConfirm) {
                 Button("Confirm") {
+                    HapticManager.tap()
                     safeTimeManager.updateSafeSchedule(
                         start: selectedStart,
                         end: selectedEnd,
@@ -72,8 +74,9 @@ struct SafeTimeSettingsView: View {
                     safeStartTime = selectedStart.timeIntervalSince1970
                     safeEndTime = selectedEnd.timeIntervalSince1970
                     lastSafeTimeChangeDate = Date().timeIntervalSince1970
+                    HapticManager.success()
                 }
-                Button("Cancel", role: .cancel) {}
+                Button("Cancel", role: .cancel) { HapticManager.tap() }
             } message: {
                 Text("This change will be locked for 7 days. Are you sure?")
             }

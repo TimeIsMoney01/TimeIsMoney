@@ -14,6 +14,7 @@ struct WeekdayCalendarPicker: View {
             ForEach(1...7, id: \.self) { day in
                 let symbol = Calendar.current.shortWeekdaySymbols[day - 1]
                 Button(action: {
+                    HapticManager.tap()
                     toggle(day)
                 }) {
                     Text(symbol)
