@@ -11,13 +11,13 @@ struct SettingsView: View {
             List {
                 Section(header: Text("Reset")) {
                     Button("Reset All App Limits") {
-                        HapticManager.tap()
+                        triggerLightHaptic()
                         onResetLimits()
                         HapticManager.success()
                     }
                     .primaryButtonStyle()
                     Button("Reset All App Sessions") {
-                        HapticManager.tap()
+                        triggerLightHaptic()
                         onResetSessions()
                         HapticManager.success()
                     }
@@ -26,7 +26,7 @@ struct SettingsView: View {
 
                 Section(header: Text("Onboarding")) {
                     Button("See Onboarding Again") {
-                        HapticManager.tap()
+                        triggerLightHaptic()
                         onRecallOnboarding()
                     }
                     .primaryButtonStyle()
@@ -43,7 +43,7 @@ struct SettingsView: View {
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Close") {
-                        HapticManager.tap()
+                        triggerLightHaptic()
                         isPresented = false
                     }
                 }

@@ -29,7 +29,7 @@ struct PaywallView: View {
                 }
 
                 Button("Cancel") {
-                    HapticManager.tap()
+                    triggerLightHaptic()
                     dismiss()
                 }
                 .primaryButtonStyle()
@@ -49,7 +49,7 @@ struct PaywallView: View {
             VStack(spacing: 20) {
                 ForEach(store.products, id: \.id) { product in
                     DonationProductButton(product: product) {
-                        HapticManager.tap()
+                        triggerLightHaptic()
                         Task {
                             let success = await store.purchase(product)
                             if success {
