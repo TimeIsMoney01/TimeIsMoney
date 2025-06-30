@@ -35,7 +35,7 @@ struct DonationPriceSettingsView: View {
             }
 
             Button("Confirm Donation Amount") {
-                HapticManager.tap()
+                triggerLightHaptic()
                 presentationMode.wrappedValue.dismiss()
                 HapticManager.success()
             }

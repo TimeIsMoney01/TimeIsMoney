@@ -28,7 +28,7 @@ struct SessionView: View {
                     .padding()
 
                 Button("End Session") {
-                    HapticManager.tap()
+                    triggerLightHaptic()
                     sessionActive = false
                     dismiss()
                 }

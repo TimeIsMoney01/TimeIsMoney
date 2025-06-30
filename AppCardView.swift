@@ -52,7 +52,7 @@ struct AppCardView: View {
                 Spacer()
 
                 Button(action: {
-                    HapticManager.tap()
+                    triggerLightHaptic()
                     onStart()
                 }) {
                     Text("Start")

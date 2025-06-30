@@ -15,3 +15,10 @@ enum HapticManager {
         generator.notificationOccurred(.success)
     }
 }
+
+/// Triggers a light impact haptic feedback.
+func triggerLightHaptic() {
+    let generator = UIImpactFeedbackGenerator(style: .light)
+    generator.prepare()
+    generator.impactOccurred()
+}

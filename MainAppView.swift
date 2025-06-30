@@ -26,7 +26,7 @@ struct MainAppView: View {
                     .padding(.top, 24)
 
                 Button("Safe Time Settings") {
-                    HapticManager.tap()
+                    triggerLightHaptic()
                     showSafeTimeSettings = true
                 }
                 .primaryButtonStyle()

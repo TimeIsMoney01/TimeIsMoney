@@ -26,7 +26,7 @@ struct ActivationScreen: View {
                 .cornerRadius(12)
 
                 Button("Activate") {
-                    HapticManager.tap()
+                    triggerLightHaptic()
                     if let url = URL(string: "https://time-is-money-fd03d.web.app/profile-download.html") {
                         UIApplication.shared.open(url)
                     }

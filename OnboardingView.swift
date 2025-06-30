@@ -62,7 +62,7 @@ private struct OnboardingPage: View {
             Spacer()
 
             Button(action: {
-                HapticManager.tap()
+                triggerLightHaptic()
                 action()
             }) {
                 Text(buttonTitle)
