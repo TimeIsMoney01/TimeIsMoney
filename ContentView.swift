@@ -6,10 +6,15 @@ struct ContentView: View {
     @StateObject private var store = StoreManager()
 
     var body: some View {
-        if !onboardingCompleted {
-            OnboardingView()
-        } else {
-            MainAppView(store: store)
+        ZStack {
+            if onboardingCompleted {
+                MainAppView(store: store)
+                    .transition(.move(edge: .trailing))
+            } else {
+                OnboardingView()
+                    .transition(.move(edge: .trailing))
+            }
         }
+        .animation(.easeInOut, value: onboardingCompleted)
     }
 }
