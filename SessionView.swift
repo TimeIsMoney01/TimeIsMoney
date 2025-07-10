@@ -18,10 +18,10 @@ struct SessionView: View {
 
             VStack(spacing: 20) {
                 Text("You're in a session for")
-                    .font(FontTheme.subtitleFont)
+                    .font(Font.system(size: 24, weight: .bold, design: .default))
                     .foregroundColor(ColorTheme.accentOrange)
                 Text(appName)
-                    .font(FontTheme.titleFont)
+                    .font(Font.system(size: 24, weight: .bold, design: .default))
                     .foregroundColor(ColorTheme.textWhite)
                     .bold()
 

@@ -4,7 +4,7 @@ import SwiftUI
 struct PrimaryButtonStyle: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .font(FontTheme.buttonFont)
+            .font(Font.system(size: 24, weight: .bold, design: .default))
             .fontWeight(.bold)
             .foregroundColor(.white)
             .padding()
