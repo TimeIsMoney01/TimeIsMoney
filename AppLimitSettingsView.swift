@@ -21,6 +21,7 @@ struct AppLimitSettingsView: View {
             VStack(spacing: 20) {
             Text("Set Daily Limits")
                 .font(FontTheme.titleFont)
+                .foregroundColor(ColorTheme.textWhite)
                 .bold()
                 .padding(.top)
 

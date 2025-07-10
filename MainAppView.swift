@@ -24,6 +24,7 @@ struct MainAppView: View {
             VStack(spacing: 24) {
                 Text("Time Is Money")
                     .font(FontTheme.titleFont)
+                    .foregroundColor(ColorTheme.textWhite)
                     .bold()
                     .padding(.top, 24)
 

@@ -9,6 +9,7 @@ struct ActivationScreen: View {
             VStack(spacing: 26) {
                 Text("Let’s Finish Setup")
                     .font(FontTheme.titleFont)
+                    .foregroundColor(ColorTheme.textWhite)
                     .multilineTextAlignment(.center)
 
                 Text("Just one step left: install the permission from Safari so we can enforce screen time limits.")

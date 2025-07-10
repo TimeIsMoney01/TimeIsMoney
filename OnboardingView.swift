@@ -52,12 +52,14 @@ private struct OnboardingPage: View {
             VStack(spacing: 12) {
                 Text(title)
                     .font(FontTheme.titleFont)
+                    .foregroundColor(ColorTheme.textWhite)
                     .bold()
                     .multilineTextAlignment(.center)
                     .frame(maxWidth: .infinity)
 
                 Text(subtitle)
-                    .font(FontTheme.bodyFont)
+                    .font(FontTheme.subtitleFont)
+                    .foregroundColor(ColorTheme.accentOrange)
                     .multilineTextAlignment(.center)
                     .frame(maxWidth: .infinity)
                     .padding(.horizontal)

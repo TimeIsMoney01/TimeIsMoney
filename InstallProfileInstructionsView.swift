@@ -14,6 +14,7 @@ struct InstallProfileInstructionsView: View {
             VStack(spacing: 8) {
                 Text("Let’s Finish Setup")
                     .font(FontTheme.titleFont)
+                    .foregroundColor(ColorTheme.textWhite)
                     .bold()
                     .multilineTextAlignment(.center)
 
