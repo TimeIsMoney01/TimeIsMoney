@@ -20,8 +20,10 @@ struct WeekdayCalendarPicker: View {
                     Text(symbol)
                         .frame(maxWidth: .infinity, minHeight: 32)
                         .padding(4)
-                        .background(selection.contains(day) ? Color.blue.opacity(0.2) : Color.clear)
-                        .cornerRadius(6)
+                        .background(selection.contains(day) ? ColorTheme.accentOrange : ColorTheme.buttonDarkGray)
+                        .foregroundColor(.white)
+                        .cornerRadius(12)
+                        .shadow(color: .black.opacity(0.2), radius: 2, x: 0, y: 1)
                 }
                 .buttonStyle(.plain)
                 .disabled(disabled)

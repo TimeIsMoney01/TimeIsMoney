@@ -37,6 +37,7 @@ struct LimitSetterView: View {
                         saveAppLimits()
                         HapticManager.success()
                     }
+                    .primaryButtonStyle()
                 }
             }
             }

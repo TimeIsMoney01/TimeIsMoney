@@ -9,13 +9,7 @@ struct PrimaryButtonStyle: ViewModifier {
             .foregroundColor(.white)
             .padding()
             .frame(maxWidth: .infinity)
-            .background(
-                LinearGradient(
-                    colors: [Color.blue, Color.purple],
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
-                )
-            )
+            .background(ColorTheme.buttonDarkGray)
             .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
             .shadow(color: Color.black.opacity(0.2), radius: 4, x: 0, y: 2)
     }

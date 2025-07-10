@@ -50,6 +50,7 @@ struct SettingsView: View {
                         triggerLightHaptic()
                         isPresented = false
                     }
+                    .primaryButtonStyle()
                 }
             }
         }

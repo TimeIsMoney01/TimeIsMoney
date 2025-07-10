@@ -38,7 +38,6 @@ struct PaywallView: View {
                     dismiss()
                 }
                 .primaryButtonStyle()
-                .foregroundColor(.red)
             }
             .padding()
             .navigationBarTitleDisplayMode(.inline)
