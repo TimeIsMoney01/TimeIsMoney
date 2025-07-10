@@ -37,7 +37,9 @@ struct SafeTimeSettingsView: View {
             NavigationView {
             Form {
                 // Pick the hours during which usage is free
-                Section(header: Text("Select your Safe Time Window")) {
+                Section(header: Text("Select your Safe Time Window")
+                    .font(FontTheme.subtitleFont)
+                    .foregroundColor(ColorTheme.accentOrange)) {
                     DatePicker("Start Time", selection: $selectedStart, displayedComponents: .hourAndMinute)
                         .disabled(!safeTimeManager.canUpdateSafeTime)
                     DatePicker("End Time", selection: $selectedEnd, displayedComponents: .hourAndMinute)
@@ -45,7 +47,9 @@ struct SafeTimeSettingsView: View {
                 }
 
                 // Choose which weekdays the window is active using a compact calendar
-                Section(header: Text("Active Days")) {
+                Section(header: Text("Active Days")
+                    .font(FontTheme.subtitleFont)
+                    .foregroundColor(ColorTheme.accentOrange)) {
                     WeekdayCalendarPicker(selection: $selectedDays,
                                           disabled: !safeTimeManager.canUpdateSafeTime)
                 }

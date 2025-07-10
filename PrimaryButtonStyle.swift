@@ -6,7 +6,7 @@ struct PrimaryButtonStyle: ViewModifier {
         content
             .font(FontTheme.buttonFont)
             .fontWeight(.bold)
-            .foregroundColor(.white)
+            .foregroundColor(ColorTheme.textWhite)
             .padding()
             .frame(maxWidth: .infinity)
             .background(ColorTheme.buttonDarkGray)

@@ -13,7 +13,9 @@ struct SettingsView: View {
 
             NavigationView {
             List {
-                Section(header: Text("Reset")) {
+                Section(header: Text("Reset")
+                    .font(FontTheme.subtitleFont)
+                    .foregroundColor(ColorTheme.accentOrange)) {
                     Button("Reset All App Limits") {
                         triggerLightHaptic()
                         onResetLimits()
@@ -28,7 +30,9 @@ struct SettingsView: View {
                     .primaryButtonStyle()
                 }
 
-                Section(header: Text("Onboarding")) {
+                Section(header: Text("Onboarding")
+                    .font(FontTheme.subtitleFont)
+                    .foregroundColor(ColorTheme.accentOrange)) {
                     Button("See Onboarding Again") {
                         triggerLightHaptic()
                         onRecallOnboarding()
@@ -36,7 +40,9 @@ struct SettingsView: View {
                     .primaryButtonStyle()
                 }
 
-                Section(header: Text("About")) {
+                Section(header: Text("About")
+                    .font(FontTheme.subtitleFont)
+                    .foregroundColor(ColorTheme.accentOrange)) {
                     Text("Time is Money v1.0")
                     Text("75% of profits go to charity.")
                         .font(FontTheme.bodyFont)
