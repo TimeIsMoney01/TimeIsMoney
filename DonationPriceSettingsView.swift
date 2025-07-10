@@ -13,13 +13,13 @@ struct DonationPriceSettingsView: View {
 
             VStack(spacing: 30) {
             Text("Set Donation Price")
-                .font(Font.system(size: 24, weight: .bold, design: .default))
+                .font(FontTheme.titleFont)
                 .foregroundColor(ColorTheme.textWhite)
                 .bold()
                 .multilineTextAlignment(.center)
 
             Text("Choose how much you're willing to donate each time you exceed your daily app limit.")
-                .font(Font.system(size: 24, weight: .bold, design: .default))
+                .font(FontTheme.bodyFont)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal)
 
@@ -28,11 +28,11 @@ struct DonationPriceSettingsView: View {
                     .padding(.horizontal)
 
                 Text(String(format: "$%.2f", donationPrice))
-                    .font(Font.system(size: 24, weight: .bold, design: .default))
+                    .font(FontTheme.subtitleFont)
                     .padding(.top, 4)
 
                 Text("recommended\nfor beginners")
-                    .font(Font.system(size: 24, weight: .bold, design: .default))
+                    .font(FontTheme.bodyFont)
                     .multilineTextAlignment(.center)
                     .foregroundColor(.gray)
                     .scaleEffect(0.8)

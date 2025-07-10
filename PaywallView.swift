@@ -16,13 +16,13 @@ struct PaywallView: View {
             NavigationView {
             VStack(spacing: 30) {
                 Text("Time’s Up for \(appName)")
-                    .font(Font.system(size: 24, weight: .bold, design: .default))
+                    .font(FontTheme.titleFont)
                     .foregroundColor(ColorTheme.textWhite)
                     .bold()
                     .multilineTextAlignment(.center)
 
                 Text("You’ve reached your limit. To keep going, donate an amount below to unlock more time.")
-                    .font(Font.system(size: 24, weight: .bold, design: .default))
+                    .font(FontTheme.bodyFont)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal)
 
@@ -77,14 +77,14 @@ struct DonationProductButton: View {
             HStack {
                 VStack(alignment: .leading) {
                     Text(product.displayName)
-                        .font(Font.system(size: 24, weight: .bold, design: .default))
+                        .font(FontTheme.subtitleFont)
                     Text(product.description)
-                        .font(Font.system(size: 24, weight: .bold, design: .default))
+                        .font(FontTheme.bodyFont)
                         .foregroundColor(.gray)
                 }
                 Spacer()
                 Text(product.displayPrice)
-                    .font(Font.system(size: 24, weight: .bold, design: .default))
+                    .font(FontTheme.subtitleFont)
             }
             .padding()
         }

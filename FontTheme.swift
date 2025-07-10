@@ -1,7 +1,7 @@
 import SwiftUI
 
 /// Provides a centralized set of fonts used throughout the app.
-enum FontTheme {
+struct FontTheme {
     /// Bold title font for large headings.
     static let titleFont = Font.system(size: 28, weight: .bold, design: .default)
     /// Semibold font for subtitles and section headers.
