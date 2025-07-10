@@ -4,7 +4,7 @@ import StoreKit
 struct PaywallView: View {
     let appName: String
     let onUnlock: () -> Void
-    
+
     @Environment(\.dismiss) var dismiss
     @ObservedObject var store: StoreManager
 
@@ -14,35 +14,36 @@ struct PaywallView: View {
                 .ignoresSafeArea()
 
             NavigationView {
-            VStack(spacing: 30) {
-                Text("Time’s Up for \(appName)")
-                    .font(FontTheme.titleFont)
-                    .foregroundColor(ColorTheme.textWhite)
-                    .bold()
-                    .multilineTextAlignment(.center)
+                VStack(spacing: 30) {
+                    Text("Time’s Up for \(appName)")
+                        .font(FontTheme.titleFont)
+                        .foregroundColor(ColorTheme.textWhite)
+                        .bold()
+                        .multilineTextAlignment(.center)
 
-                Text("You’ve reached your limit. To keep going, donate an amount below to unlock more time.")
-                    .font(FontTheme.bodyFont)
-                    .multilineTextAlignment(.center)
-                    .padding(.horizontal)
+                    Text("You’ve reached your limit. To keep going, donate an amount below to unlock more time.")
+                        .font(FontTheme.bodyFont)
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal)
 
-                if store.isLoading {
-                    ProgressView()
-                        .progressViewStyle(CircularProgressViewStyle())
-                } else {
-                    productList
+                    if store.isLoading {
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle())
+                    } else {
+                        productList
+                    }
+
+                    Button("Cancel") {
+                        triggerLightHaptic()
+                        dismiss()
+                    }
+                    .primaryButtonStyle()
                 }
-
-                Button("Cancel") {
-                    triggerLightHaptic()
-                    dismiss()
+                .padding()
+                .navigationBarTitleDisplayMode(.inline)
+                .task {
+                    await store.loadProducts()
                 }
-                .primaryButtonStyle()
-            }
-            .padding()
-            .navigationBarTitleDisplayMode(.inline)
-            .task {
-                await store.loadProducts()
             }
         }
     }
@@ -91,3 +92,4 @@ struct DonationProductButton: View {
         .primaryButtonStyle()
     }
 }
+
