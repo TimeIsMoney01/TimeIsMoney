@@ -14,6 +14,7 @@ struct DonationPriceSettingsView: View {
             VStack(spacing: 30) {
             Text("Set Donation Price")
                 .font(FontTheme.titleFont)
+                .foregroundColor(ColorTheme.textWhite)
                 .bold()
                 .multilineTextAlignment(.center)
 
