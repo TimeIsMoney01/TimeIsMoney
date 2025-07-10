@@ -7,7 +7,11 @@ struct SettingsView: View {
     var onRecallOnboarding: () -> Void
 
     var body: some View {
-        NavigationView {
+        ZStack {
+            ColorTheme.backgroundBlack
+                .ignoresSafeArea()
+
+            NavigationView {
             List {
                 Section(header: Text("Reset")) {
                     Button("Reset All App Limits") {
@@ -49,7 +53,6 @@ struct SettingsView: View {
                 }
             }
         }
-        .softBackground()
     }
 }
 //

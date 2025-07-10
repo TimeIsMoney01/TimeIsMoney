@@ -18,7 +18,9 @@ struct MainAppView: View {
 
     var body: some View {
         ZStack {
-        ScrollView {
+            ColorTheme.backgroundBlack
+                .ignoresSafeArea()
+            ScrollView {
             VStack(spacing: 24) {
                 Text("Time Is Money")
                     .font(FontTheme.titleFont)
@@ -67,7 +69,6 @@ struct MainAppView: View {
                 .padding(.horizontal)
             }
         }
-        .softBackground()
         .onAppear {
             loadAppLimits()
             loadAppSessions()

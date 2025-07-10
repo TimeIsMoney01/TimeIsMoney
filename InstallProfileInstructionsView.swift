@@ -4,7 +4,11 @@ struct InstallProfileInstructionsView: View {
     @AppStorage("profileInstalled") var profileInstalled: Bool = false
 
     var body: some View {
-        VStack(spacing: 30) {
+        ZStack {
+            ColorTheme.backgroundBlack
+                .ignoresSafeArea()
+
+            VStack(spacing: 30) {
             Spacer(minLength: 20)
 
             VStack(spacing: 8) {
@@ -56,6 +60,6 @@ struct InstallProfileInstructionsView: View {
             Spacer()
         }
         .padding()
-        .softBackground()
+    }
     }
 }

@@ -4,6 +4,8 @@ import SwiftUI
 struct ActivationScreen: View {
     var body: some View {
         ZStack {
+            ColorTheme.backgroundBlack
+                .ignoresSafeArea()
             VStack(spacing: 26) {
                 Text("Let’s Finish Setup")
                     .font(FontTheme.titleFont)
@@ -38,6 +40,5 @@ struct ActivationScreen: View {
             }
             .padding()
         }
-        .softBackground()
     }
 }

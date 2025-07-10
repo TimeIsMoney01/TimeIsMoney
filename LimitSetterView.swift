@@ -8,7 +8,11 @@ struct LimitSetterView: View {
     let apps = ["TikTok", "Instagram", "YouTube", "Snapchat", "Reddit"]
 
     var body: some View {
-        NavigationView {
+        ZStack {
+            ColorTheme.backgroundBlack
+                .ignoresSafeArea()
+
+            NavigationView {
             List {
                 ForEach(apps, id: \.self) { app in
                     VStack(alignment: .leading) {
@@ -35,8 +39,8 @@ struct LimitSetterView: View {
                     }
                 }
             }
+            }
         }
-        .softBackground()
         .onAppear {
             loadAppLimits()
         }

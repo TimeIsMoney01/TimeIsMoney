@@ -5,7 +5,11 @@ struct OnboardingView: View {
     @State private var pageIndex = 0
 
     var body: some View {
-        TabView(selection: $pageIndex) {
+        ZStack {
+            ColorTheme.backgroundBlack
+                .ignoresSafeArea()
+
+            TabView(selection: $pageIndex) {
             OnboardingPage(
                 title: "Welcome to Time is Money",
                 subtitle: "Let's take back your time.",
@@ -29,9 +33,9 @@ struct OnboardingView: View {
                 onboardingCompleted = true
             }
             .tag(2)
+            }
+            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
         }
-        .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
-        .softBackground()
     }
 }
 

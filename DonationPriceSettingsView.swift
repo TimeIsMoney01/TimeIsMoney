@@ -7,7 +7,11 @@ struct DonationPriceSettingsView: View {
     let options: [Double] = [0.5, 1, 2, 3, 4, 5]
 
     var body: some View {
-        VStack(spacing: 30) {
+        ZStack {
+            ColorTheme.backgroundBlack
+                .ignoresSafeArea()
+
+            VStack(spacing: 30) {
             Text("Set Donation Price")
                 .font(FontTheme.titleFont)
                 .bold()
@@ -45,7 +49,7 @@ struct DonationPriceSettingsView: View {
             Spacer()
         }
         .padding()
-        .softBackground()
+    }
     }
 }
 //
