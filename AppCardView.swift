@@ -44,7 +44,7 @@ struct AppCardView: View {
 
                 VStack(alignment: .leading, spacing: 6) {
                     Text(appName)
-                        .font(Font.system(size: 24, weight: .bold, design: .default))
+                        .font(FontTheme.subtitleFont)
                     ProgressView(value: percentUsed)
                         .progressViewStyle(LinearProgressViewStyle(tint: usageColor))
                 }

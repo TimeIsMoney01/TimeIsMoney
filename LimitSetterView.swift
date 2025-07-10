@@ -17,13 +17,13 @@ struct LimitSetterView: View {
                 ForEach(apps, id: \.self) { app in
                     VStack(alignment: .leading) {
                         Text(app)
-                            .font(Font.system(size: 24, weight: .bold, design: .default))
+                            .font(FontTheme.subtitleFont)
                         Slider(value: Binding(
                             get: { Double(appLimits[app] ?? 30) },
                             set: { appLimits[app] = Int($0) }
                         ), in: 0...180, step: 5)
                         Text("Limit: \(appLimits[app] ?? 30) minutes")
-                            .font(Font.system(size: 24, weight: .bold, design: .default))
+                            .font(FontTheme.bodyFont)
                             .foregroundColor(.gray)
                     }
                     .padding(.vertical)
