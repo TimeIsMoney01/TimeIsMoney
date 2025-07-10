@@ -7,6 +7,8 @@ struct ContentView: View {
 
     var body: some View {
         ZStack {
+            ColorTheme.backgroundBlack
+                .ignoresSafeArea()
             if onboardingCompleted {
                 MainAppView(store: store)
                     .transition(.move(edge: .trailing))
@@ -16,6 +18,5 @@ struct ContentView: View {
             }
         }
         .animation(.easeInOut, value: onboardingCompleted)
-        .softBackground()
     }
 }

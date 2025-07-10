@@ -9,7 +9,11 @@ struct PaywallView: View {
     @ObservedObject var store: StoreManager
 
     var body: some View {
-        NavigationView {
+        ZStack {
+            ColorTheme.backgroundBlack
+                .ignoresSafeArea()
+
+            NavigationView {
             VStack(spacing: 30) {
                 Text("Time’s Up for \(appName)")
                     .font(FontTheme.titleFont)
@@ -41,7 +45,6 @@ struct PaywallView: View {
                 await store.loadProducts()
             }
         }
-        .softBackground()
     }
 
     var productList: some View {

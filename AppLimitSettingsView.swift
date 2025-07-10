@@ -14,7 +14,11 @@ struct AppLimitSettingsView: View {
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
-        VStack(spacing: 20) {
+        ZStack {
+            ColorTheme.backgroundBlack
+                .ignoresSafeArea()
+
+            VStack(spacing: 20) {
             Text("Set Daily Limits")
                 .font(FontTheme.titleFont)
                 .bold()
@@ -50,13 +54,12 @@ struct AppLimitSettingsView: View {
 
             Spacer()
         }
-        .onAppear {
-            loadLimits()
-        }
-        .sheet(isPresented: $showDonationPriceScreen) {
-            DonationPriceSettingsView()
-        }
-        .softBackground()
+    }
+    .onAppear {
+        loadLimits()
+    }
+    .sheet(isPresented: $showDonationPriceScreen) {
+        DonationPriceSettingsView()
     }
 
     func saveLimits() {

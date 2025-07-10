@@ -30,7 +30,11 @@ struct SafeTimeSettingsView: View {
     @State private var showConfirm = false
 
     var body: some View {
-        NavigationView {
+        ZStack {
+            ColorTheme.backgroundBlack
+                .ignoresSafeArea()
+
+            NavigationView {
             Form {
                 // Pick the hours during which usage is free
                 Section(header: Text("Select your Safe Time Window")) {
@@ -82,12 +86,12 @@ struct SafeTimeSettingsView: View {
                 Text("This change will be locked for 7 days. Are you sure?")
             }
         }
-        .softBackground()
         .onAppear {
             // Populate selections with previously saved values
             selectedStart = Date(timeIntervalSince1970: safeStartTime)
             selectedEnd = Date(timeIntervalSince1970: safeEndTime)
             selectedDays = Set(safeTimeManager.safeDays)
         }
+    }
     }
 }

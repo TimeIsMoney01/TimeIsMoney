@@ -13,6 +13,9 @@ struct SessionView: View {
 
     var body: some View {
         ZStack {
+            ColorTheme.backgroundBlack
+                .ignoresSafeArea()
+
             VStack(spacing: 20) {
                 Text("You're in a session for")
                     .font(FontTheme.subtitleFont)
@@ -36,7 +39,6 @@ struct SessionView: View {
             }
             .padding()
         }
-        .softBackground()
         .onAppear {
             startTimer()
         }
