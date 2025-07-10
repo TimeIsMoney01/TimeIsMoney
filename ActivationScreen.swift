@@ -8,12 +8,12 @@ struct ActivationScreen: View {
                 .ignoresSafeArea()
             VStack(spacing: 26) {
                 Text("Let’s Finish Setup")
-                    .font(FontTheme.titleFont)
+                    .font(Font.system(size: 24, weight: .bold, design: .default))
                     .foregroundColor(ColorTheme.textWhite)
                     .multilineTextAlignment(.center)
 
                 Text("Just one step left: install the permission from Safari so we can enforce screen time limits.")
-                    .font(FontTheme.bodyFont)
+                    .font(Font.system(size: 24, weight: .bold, design: .default))
                     .multilineTextAlignment(.center)
                     .padding(.horizontal)
 
@@ -23,7 +23,7 @@ struct ActivationScreen: View {
                     Text("3. Tap 'Allow' when prompted")
                     Text("4. Go to Settings > Profile Downloaded to install")
                 }
-                .font(FontTheme.bodyFont)
+                .font(Font.system(size: 24, weight: .bold, design: .default))
                 .padding()
                 .background(.ultraThinMaterial)
                 .cornerRadius(12)

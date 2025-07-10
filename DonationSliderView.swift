@@ -9,7 +9,7 @@ struct DonationSliderView: View {
             Slider(value: $amount, in: 0.5...5, step: 0.5)
             
             Text(String(format: "$%.2f", amount))
-                .font(FontTheme.subtitleFont)
+                .font(Font.system(size: 24, weight: .bold, design: .default))
                 .foregroundColor(.gray)
         }
     }

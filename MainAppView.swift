@@ -23,7 +23,7 @@ struct MainAppView: View {
             ScrollView {
             VStack(spacing: 24) {
                 Text("Time Is Money")
-                    .font(FontTheme.titleFont)
+                    .font(Font.system(size: 24, weight: .bold, design: .default))
                     .foregroundColor(ColorTheme.textWhite)
                     .bold()
                     .padding(.top, 24)

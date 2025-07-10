@@ -63,7 +63,7 @@ struct SafeTimeSettingsView: View {
                 if !safeTimeManager.canUpdateSafeTime {
                     // Show a notice when edits are locked
                     Text("You can update your safe time again in \(safeTimeManager.remainingDays) days. Changes are allowed once every 7 days.")
-                        .font(FontTheme.bodyFont)
+                        .font(Font.system(size: 24, weight: .bold, design: .default))
                         .foregroundColor(.gray)
                 }
             }

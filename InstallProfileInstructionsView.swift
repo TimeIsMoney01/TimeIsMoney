@@ -13,13 +13,13 @@ struct InstallProfileInstructionsView: View {
 
             VStack(spacing: 8) {
                 Text("Let’s Finish Setup")
-                    .font(FontTheme.titleFont)
+                    .font(Font.system(size: 24, weight: .bold, design: .default))
                     .foregroundColor(ColorTheme.textWhite)
                     .bold()
                     .multilineTextAlignment(.center)
 
                 Text("Just one step left: install the permission in Safari so we can enforce your screen time limits.")
-                    .font(FontTheme.bodyFont)
+                    .font(Font.system(size: 24, weight: .bold, design: .default))
                     .multilineTextAlignment(.center)
                     .padding(.horizontal)
             }
@@ -30,7 +30,7 @@ struct InstallProfileInstructionsView: View {
                 Text("3. Tap “Allow” and follow the prompts")
                 Text("4. Return to this app and tap Continue")
             }
-            .font(FontTheme.subtitleFont) // 🔠 Larger font
+            .font(Font.system(size: 24, weight: .bold, design: .default)) // 🔠 Larger font
             .padding()
             .frame(maxWidth: .infinity, alignment: .leading)
             .background(Color.gray.opacity(0.1))
