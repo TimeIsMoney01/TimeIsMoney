@@ -1,7 +1,8 @@
 import SwiftUI
 
 struct AppLimitSettingsView: View {
-    @AppStorage("appLimits") var appLimitsData: Data = Data()
+    @AppStorage("appLimits") private var appLimitsData: Data = Data()
+
     @State private var appLimits: [String: Int] = [
         "TikTok": 0,
         "Instagram": 0,
@@ -11,7 +12,7 @@ struct AppLimitSettingsView: View {
     ]
 
     @State private var showDonationPriceScreen = false
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.presentationMode) private var presentationMode
 
     var body: some View {
         ZStack {
@@ -19,57 +20,58 @@ struct AppLimitSettingsView: View {
                 .ignoresSafeArea()
 
             VStack(spacing: 20) {
-            Text("Set Daily Limits")
-                .font(FontTheme.titleFont)
-                .foregroundColor(ColorTheme.textWhite)
-                .bold()
-                .padding(.top)
+                Text("Set Daily Limits")
+                    .font(FontTheme.titleFont)
+                    .foregroundColor(ColorTheme.textWhite)
+                    .bold()
+                    .padding(.top)
 
-            List {
-                ForEach(appLimits.keys.sorted(), id: \.self) { app in
-                    VStack(alignment: .leading) {
-                        Text(app)
-                            .font(FontTheme.subtitleFont)
+                List {
+                    ForEach(appLimits.keys.sorted(), id: \.self) { app in
+                        VStack(alignment: .leading) {
+                            Text(app)
+                                .font(FontTheme.subtitleFont)
 
-                        Slider(value: Binding(
-                            get: { Double(appLimits[app] ?? 0) },
-                            set: { appLimits[app] = Int($0) }
-                        ), in: 0...120, step: 5)
+                            Slider(value: Binding(
+                                get: { Double(appLimits[app] ?? 0) },
+                                set: { appLimits[app] = Int($0) }
+                            ), in: 0...120, step: 5)
 
-                        Text("\(appLimits[app] ?? 0) minutes")
-                            .font(FontTheme.bodyFont)
-                            .foregroundColor(.gray)
+                            Text("\(appLimits[app] ?? 0) minutes")
+                                .font(FontTheme.bodyFont)
+                                .foregroundColor(.gray)
+                        }
+                        .padding(.vertical, 5)
                     }
-                    .padding(.vertical, 5)
                 }
-            }
 
-            Button("Save Limits") {
-                triggerLightHaptic()
-                saveLimits()
-                HapticManager.success()
-                showDonationPriceScreen = true
-            }
-            .primaryButtonStyle()
-            .padding(.horizontal)
+                Button("Save Limits") {
+                    triggerLightHaptic()
+                    saveLimits()
+                    HapticManager.success()
+                    showDonationPriceScreen = true
+                }
+                .primaryButtonStyle()
+                .padding(.horizontal)
 
-            Spacer()
+                Spacer()
+            }
+        }
+        .onAppear {
+            loadLimits()
+        }
+        .sheet(isPresented: $showDonationPriceScreen) {
+            DonationPriceSettingsView()
         }
     }
-    .onAppear {
-        loadLimits()
-    }
-    .sheet(isPresented: $showDonationPriceScreen) {
-        DonationPriceSettingsView()
-    }
 
-    func saveLimits() {
+    private func saveLimits() {
         if let encoded = try? JSONEncoder().encode(appLimits) {
             appLimitsData = encoded
         }
     }
 
-    func loadLimits() {
+    private func loadLimits() {
         if let decoded = try? JSONDecoder().decode([String: Int].self, from: appLimitsData) {
             appLimits = decoded
         }
