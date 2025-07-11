@@ -8,6 +8,6 @@ enum ColorTheme {
     static let textWhite = Color.white
     /// Accent orange used for highlights (#FF9500).
     static let accentOrange = Color(red: 1, green: 149/255, blue: 0)
-    /// Dark gray for button backgrounds (#1C1C1E).
-    static let buttonDarkGray = Color(red: 28/255, green: 28/255, blue: 30/255)
+    /// Dark gray for button backgrounds (#3C3C3E).
+    static let buttonDarkGray = Color(red: 60/255, green: 60/255, blue: 62/255)
 }
