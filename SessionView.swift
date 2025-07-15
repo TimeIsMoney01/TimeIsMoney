@@ -22,7 +22,7 @@ struct SessionView: View {
                     .foregroundColor(ColorTheme.accentOrange)
                 Text(appName)
                     .font(FontTheme.titleFont)
-                    .foregroundColor(ColorTheme.textWhite)
+                    .foregroundColor(.white)
                     .bold()
 
                 Text("Time used: \(timeUsed) / \(limit) min")
