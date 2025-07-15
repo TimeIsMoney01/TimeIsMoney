@@ -17,7 +17,7 @@ struct PaywallView: View {
                 VStack(spacing: 30) {
                     Text("Time’s Up for \(appName)")
                         .font(FontTheme.titleFont)
-                        .foregroundColor(ColorTheme.textWhite)
+                        .foregroundColor(.white)
                         .bold()
                         .multilineTextAlignment(.center)
 
