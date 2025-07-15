@@ -31,6 +31,7 @@ struct AppLimitSettingsView: View {
                         VStack(alignment: .leading) {
                             Text(app)
                                 .font(FontTheme.subtitleFont)
+                                .foregroundColor(.white)
 
                             Slider(value: Binding(
                                 get: { Double(appLimits[app] ?? 0) },
